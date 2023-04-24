@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 05, 2023 at 10:43 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Generation Time: Apr 22, 2023 at 01:35 PM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `category_list` (
   `id` int(30) NOT NULL,
   `name` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `category_list`
@@ -52,24 +52,25 @@ CREATE TABLE `customer_list` (
   `id` int(30) NOT NULL,
   `name` text NOT NULL,
   `contact` varchar(30) NOT NULL,
-  `address` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `address` text NOT NULL,
+  `date_added` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `customer_list`
 --
 
-INSERT INTO `customer_list` (`id`, `name`, `contact`, `address`) VALUES
-(1, 'Grace Gatpo', '09956654941', '118 E.Sta Ana St Sumilang Pasig City'),
-(2, 'John Carl Lou D.L Ulep', '099155974594', '148 Mulawin St Pinagbuhatan Pasig City '),
-(3, 'Drew Diaz', '097856412587', '123 Santos St. Bambang Pasig City '),
-(4, 'Scarlet Davikah Empillo', '098654239878', '199 Geronimo Bambang Pasig City'),
-(5, 'Alas U. Balba', '098654279546', '189 Luis St. San Miguel Pasig City'),
-(6, 'Gloria De Guzman', '098654127954', '189 Sta.Rosa St Pasig City'),
-(7, 'Alex Abila', '098654791522', '190 Feliciano St Sagad Pasig City '),
-(8, 'Tyrone Betsayda ', '098654297565', '19 P.Burgos Katipunan Pasig City'),
-(9, 'Aj Avendano', '098654278854', '19 Mangga St. Sta Rosa Pasig City'),
-(10, 'Rye DG', '098654778954', 'Kyoto, Japan');
+INSERT INTO `customer_list` (`id`, `name`, `contact`, `address`, `date_added`) VALUES
+(1, 'Grace Gatpo', '09956654941', '118 E.Sta Ana St Sumilang Pasig City', '2021-02-10 18:25:12'),
+(2, 'John Carl Lou D.L Ulep', '099155974594', '148 Mulawin St Pinagbuhatan Pasig City ', '2022-07-28 18:25:12'),
+(3, 'Drew Diaz', '097856412587', '123 Santos St. Bambang Pasig City ', '2020-12-01 18:25:12'),
+(4, 'Scarlet Davikah Empillo', '098654239878', '199 Geronimo Bambang Pasig City', '2021-10-13 18:25:12'),
+(5, 'Alas U. Balba', '098654279546', '189 Luis St. San Miguel Pasig City', '2022-09-15 18:25:12'),
+(6, 'Gloria De Guzman', '098654127954', '189 Sta.Rosa St Pasig City', '2023-04-14 18:25:12'),
+(7, 'Alex Abila', '098654791522', '190 Feliciano St Sagad Pasig City ', '2023-04-14 18:25:12'),
+(8, 'Tyrone Betsayda ', '098654297565', '19 P.Burgos Katipunan Pasig City', '2023-04-14 18:25:12'),
+(9, 'Aj Avendano', '098654278854', '19 Mangga St. Sta Rosa Pasig City', '2023-04-14 18:25:12'),
+(10, 'Rye DG', '098654778954', 'Kyoto, Japan', '2023-04-14 18:25:12');
 
 -- --------------------------------------------------------
 
@@ -87,7 +88,7 @@ CREATE TABLE `inventory` (
   `other_details` text NOT NULL,
   `remarks` text NOT NULL,
   `date_updated` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `inventory`
@@ -142,7 +143,11 @@ INSERT INTO `inventory` (`id`, `product_id`, `qty`, `type`, `stock_from`, `form_
 (150, 10, 1, 2, 'Sales', 110, '{\"price\":\"150\",\"qty\":\"1\"}', 'Stock out from Sales-36335040\n', '2023-01-12 15:21:12'),
 (151, 10, 1, 2, 'Sales', 111, '{\"price\":\"150\",\"qty\":\"1\"}', 'Stock out from Sales-31812367\n', '2023-01-12 20:04:16'),
 (152, 10, 1, 2, 'Sales', 112, '{\"price\":\"150\",\"qty\":\"1\"}', 'Stock out from Sales-08493055\n', '2023-01-12 21:25:58'),
-(153, 9, 1, 2, 'Sales', 113, '{\"price\":\"50\",\"qty\":\"1\"}', 'Stock out from Sales-94757453\n', '2023-01-13 01:05:43');
+(153, 9, 1, 2, 'Sales', 113, '{\"price\":\"50\",\"qty\":\"1\"}', 'Stock out from Sales-94757453\n', '2023-01-13 01:05:43'),
+(154, 8, 2, 2, 'Sales', 114, '{\"price\":\"u20b1 150\",\"qty\":\"2\"}', 'Stock out from Sales-59796845\n', '2023-04-14 18:48:31'),
+(155, 19, 10, 1, 'receiving', 15, '{\"price\":\"500\",\"qty\":\"10\"}', 'Stock from Receiving-51983155\n', '2023-04-15 10:26:48'),
+(156, 19, 10, 1, 'receiving', 16, '{\"price\":\"500\",\"qty\":\"10\"}', 'Stock from Receiving-66879021\n', '2023-04-15 10:28:18'),
+(157, 23, 20, 1, 'receiving', 17, '{\"price\":\"55\",\"qty\":\"20\"}', 'Stock from Receiving-68731391\n', '2023-04-15 11:21:35');
 
 -- --------------------------------------------------------
 
@@ -158,23 +163,23 @@ CREATE TABLE `product_list` (
   `name` varchar(150) NOT NULL,
   `uom` varchar(10) NOT NULL,
   `description` text NOT NULL,
-  `exp_date` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `exp_date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `product_list`
 --
 
 INSERT INTO `product_list` (`id`, `category_id`, `sku`, `price`, `name`, `uom`, `description`, `exp_date`) VALUES
-(8, 9, '26615726', 150, 'Baking Powder 450g', '450g', 'a powder used as a leavening agent in making baked goods (such as quick breads) that typically consists of sodium bicarbonate, an acidic substance (such as cream of tartar), and starch or flour.', 'December 2023'),
-(9, 8, '28698365', 50, 'Piattos 85g', '85g', 'Thin and crispy, Piattos Multigrain comes in two mouthwatering flavors.', 'December 2024'),
-(10, 6, '82794544', 150, 'All Purpose Flour 200g', '200g', 'Best used for: steamed or fried, Pinoy kakanin, Rice Noodles', 'November 2023'),
-(11, 7, '74846246', 269, 'Black Rice 2kl', '2kg', 'Black rice gets its signature black-purple color from a pigment called anthocyanin, which has potent antioxidant properties', 'July 2023'),
-(12, 6, '01489089', 110, 'Jasmine Rice 1kl', '1kg', 'White rice refers generally to a processed form of rice with the hull and bran removed. Jasmine rice is usually white rice.', 'August 2023'),
-(13, 6, '72136100', 18.98, 'Cake Flour 1kg', '1kg', 'Per kg', 'July 2023'),
-(14, 9, '23313431', 185, 'White Baking Soda 340g', '340g', 'Arm & Hammer Pure Baking Soda With Shaker 340G', 'May 2023'),
-(15, 6, '44601875', 100, 'Whole Wheat Flour 2.25kg', '2.25kg', 'Best used for: bread, cookies, dense cakes', 'July 2023'),
-(18, 8, '57202141', 90, 'Doritos 198g', '198g', 'Doritos is an American brand of flavored tortilla chips produced since 1964 by Frito-Lay, a wholly owned subsidiary of PepsiCo.', 'December 2023');
+(8, 9, '26615726', 150, 'Baking Powder 450g', '450g', 'a powder used as a leavening agent in making baked goods (such as quick breads) that typically consists of sodium bicarbonate, an acidic substance (such as cream of tartar), and starch or flour.', '0000-00-00'),
+(9, 8, '28698365', 50, 'Piattos 85g', '85g', 'Thin and crispy, Piattos Multigrain comes in two mouthwatering flavors.', '0000-00-00'),
+(10, 6, '82794544', 150, 'All Purpose Flour 200g', '200g', 'Best used for: steamed or fried, Pinoy kakanin, Rice Noodles', '2023-08-09'),
+(11, 7, '74846246', 269, 'Black Rice 2kl', '2kg', 'Black rice gets its signature black-purple color from a pigment called anthocyanin, which has potent antioxidant properties', '0000-00-00'),
+(12, 6, '01489089', 110, 'Jasmine Rice 1kl', '1kg', 'White rice refers generally to a processed form of rice with the hull and bran removed. Jasmine rice is usually white rice.', '0000-00-00'),
+(13, 6, '72136100', 18.98, 'Cake Flour 1kg', '1kg', 'Per kg', '0000-00-00'),
+(14, 9, '23313431', 185, 'White Baking Soda 340g', '340g', 'Arm & Hammer Pure Baking Soda With Shaker 340G', '0000-00-00'),
+(15, 6, '44601875', 100, 'Whole Wheat Flour 2.25kg', '2.25kg', 'Best used for: bread, cookies, dense cakes', '0000-00-00'),
+(18, 8, '57202141', 90, 'Doritos 198g', '198g', 'Doritos is an American brand of flavored tortilla chips produced since 1964 by Frito-Lay, a wholly owned subsidiary of PepsiCo.', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -188,7 +193,7 @@ CREATE TABLE `receiving_list` (
   `supplier_id` int(30) NOT NULL,
   `total_amount` double NOT NULL,
   `date_added` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `receiving_list`
@@ -202,7 +207,8 @@ INSERT INTO `receiving_list` (`id`, `ref_no`, `supplier_id`, `total_amount`, `da
 (11, '68366915\n', 3, 110000, '2022-07-22 15:40:54'),
 (12, '07240281\n', 1, 1898, '2022-07-22 15:41:16'),
 (13, '84265635\n', 5, 18500, '2022-07-22 15:41:37'),
-(14, '16373371\n', 1, 10000, '2022-07-22 15:42:06');
+(14, '16373371\n', 1, 10000, '2022-07-22 15:42:06'),
+(17, '68731391\n', 10, 1100, '2023-04-15 11:21:35');
 
 -- --------------------------------------------------------
 
@@ -218,7 +224,7 @@ CREATE TABLE `sales_list` (
   `amount_tendered` double NOT NULL,
   `amount_change` double NOT NULL,
   `date_updated` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `sales_list`
@@ -245,7 +251,8 @@ INSERT INTO `sales_list` (`id`, `ref_no`, `customer_id`, `total_amount`, `amount
 (110, '36335040\n', 0, 150, 155, 5, '2023-01-12 15:21:12'),
 (111, '31812367\n', 9, 150, 200, 50, '2023-01-12 20:04:16'),
 (112, '08493055\n', 9, 150, 200, 50, '2023-01-12 21:25:58'),
-(113, '94757453\n', 10, 50, 54, 4, '2023-01-13 01:05:43');
+(113, '94757453\n', 10, 50, 54, 4, '2023-01-13 01:05:43'),
+(114, '59796845\n', 10, 300, 500, 200, '2023-04-14 18:48:31');
 
 -- --------------------------------------------------------
 
@@ -260,19 +267,20 @@ CREATE TABLE `supplier_list` (
   `address` text NOT NULL,
   `product` varchar(20) NOT NULL,
   `amount` int(11) NOT NULL,
-  `deliv_date` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `deliv_date` varchar(20) NOT NULL,
+  `date_added` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `supplier_list`
 --
 
-INSERT INTO `supplier_list` (`id`, `supplier_name`, `contact`, `address`, `product`, `amount`, `deliv_date`) VALUES
-(1, 'Wellington Flour Mills', '26719761', 'Pasig Blvd, Pasig, Metro Manila', 'All Purpose Flour', 500, 'June 18, 2022'),
-(3, 'AER Rice Center (Dealer Supplier Wholesaler Retailer Reseller Wholesale Retail)', '(02) 8712 3293', '850 Basilio St, Sampaloc, Manila, 1008 Metro Manila', 'Jasmine Rice', 1000, 'July 06, 2022'),
-(4, 'URC Universal Robina Corporation', '1800 10 872 2273', ' 555 Eulogio Amang Rodriguez Ave, Pasig, 1609 Metro Manila', 'Piattos', 700, 'May 13, 2022'),
-(5, 'Baking And Home Depot', '0977 794 2486', ' TSL Building, 59 E Rodriguez Sr. Ave, Quezon City, Metro Manila', 'Baking Powder', 500, 'March 23, 2022'),
-(10, 'Collenes Chips', '1232434', '123 Lily St. Cainta, 1234 Metro Manila', 'Doritos', 500, 'August 18, 2022');
+INSERT INTO `supplier_list` (`id`, `supplier_name`, `contact`, `address`, `product`, `amount`, `deliv_date`, `date_added`) VALUES
+(1, 'Wellington Flour Mills', '26719761', 'Pasig Blvd, Pasig, Metro Manila', 'All Purpose Flour', 500, 'June 18, 2022', '2020-04-01 18:27:42'),
+(3, 'AER Rice Center (Dealer Supplier Wholesaler Retailer Reseller Wholesale Retail)', '(02) 8712 3293', '850 Basilio St, Sampaloc, Manila, 1008 Metro Manila', 'Jasmine Rice', 1000, 'July 06, 2022', '2020-12-10 18:27:42'),
+(4, 'URC Universal Robina Corporation', '1800 10 872 2273', ' 555 Eulogio Amang Rodriguez Ave, Pasig, 1609 Metro Manila', 'Piattos', 700, 'May 13, 2022', '2020-10-09 18:27:42'),
+(5, 'Baking And Home Depot', '0977 794 2486', ' TSL Building, 59 E Rodriguez Sr. Ave, Quezon City, Metro Manila', 'Baking Powder', 500, 'March 23, 2022', '2023-04-14 18:27:42'),
+(10, 'Collenes Chips', '1232434', '123 Lily St. Cainta, 1234 Metro Manila', 'Doritos', 500, 'August 18, 2022', '2023-04-14 18:27:42');
 
 -- --------------------------------------------------------
 
@@ -287,7 +295,7 @@ CREATE TABLE `system_settings` (
   `contact` varchar(20) NOT NULL,
   `cover_img` text NOT NULL,
   `about_content` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `system_settings`
@@ -308,7 +316,7 @@ CREATE TABLE `users` (
   `username` varchar(100) NOT NULL,
   `password` varchar(200) NOT NULL,
   `type` tinyint(1) NOT NULL DEFAULT 2 COMMENT '1=admin , 2 = cashier'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
@@ -395,25 +403,25 @@ ALTER TABLE `customer_list`
 -- AUTO_INCREMENT for table `inventory`
 --
 ALTER TABLE `inventory`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=154;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=158;
 
 --
 -- AUTO_INCREMENT for table `product_list`
 --
 ALTER TABLE `product_list`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `receiving_list`
 --
 ALTER TABLE `receiving_list`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `sales_list`
 --
 ALTER TABLE `sales_list`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
 
 --
 -- AUTO_INCREMENT for table `supplier_list`

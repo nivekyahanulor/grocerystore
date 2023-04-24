@@ -73,8 +73,10 @@
 							<input type="number" step="any" class="form-control text-right" name="price" >
 						</div>
 						<div class="form-group">
-							<label class="control-label">Expiration Date</label>
-							<input type="text" step="any" class="form-control text-right" name="exp_date" >
+							<!-- <label class="control-label">Expiration Date</label>
+							<input type="text" step="any" class="form-control text-right" name="exp_date" > -->
+							<label for="expdate">Expiration Date:</label>
+  							<input type="date" id="expdate" name="expdate">
 						</div>		
 					</div>
 					<div class="card-footer">

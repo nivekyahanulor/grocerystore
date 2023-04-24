@@ -27,7 +27,7 @@
 						</div>
 					</div>
 					<div class="card-body">
-						<table class="table table-bordered">
+						<table class=" table-bordered" id="table_id">
 							<thead>
 								<th class="text-center">#</th>
 								<th class="text-center">Date</th>
@@ -58,7 +58,7 @@
 								<tr>
 									<td class="text-center"><?php echo $i++ ?></td>
 									<td class=""><?php echo date("F d, Y",strtotime($row['date_added'])) ?></td>
-									<td class=""><?php echo isset($exp_arr[$row['id']])? $exp_arr[$row['id']] :'December 2025' ?></td>
+									<td class=""><?php echo isset($exp_arr[$row['id']])? $exp_arr[$row['id']] :'December 3, 2024' ?></td>
 									<!-- <td class=""><?php echo isset($pro_arr[$row['name']])? $pro_arr[$row['id']] :'N/A' ?></td> -->
 									<td class=""><?php echo isset($sup_arr[$row['supplier_id']])? $sup_arr[$row['supplier_id']] :'N/A' ?></td>
 									

@@ -316,9 +316,6 @@ if(isset($_GET['id'])){
 		var tendered = $(this).val();
 		var tamount = $('[name="tamount"]').val();
 		$('[name="change"]').val(parseFloat(tendered) - parseFloat(tamount))
-		if(tendered == 0){
-			document.getElementById("submit").disabled = true;
-		}
 		if(tendered < tamount){
 			document.getElementById("submit").disabled = true;
 			$('[name="change"]').val(0)

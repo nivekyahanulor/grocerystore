@@ -20,7 +20,7 @@
 						<h4><b>Inventory Report</b></h4>
 					</div>
 					<div class="card-body">
-						<table class="table table-bordered">
+						<table class=" table-bordered" id="table_id">
 							<thead>
 								<th class="text-center">#</th>
 								<th class="text-center">Product Name</th>

@@ -82,7 +82,7 @@
 										<p>Name : <b><?php echo $row['name'] ?></b></p>
 										<p><small>Contact : <b><?php echo $row['contact'] ?></b></small></p>
 										<p><small>Address : <b><?php echo $row['address'] ?></b></small></p>
-										<p><small>Date Added : <b><?php echo $row['date_addedd'] ?></b></small></p>
+										<p><small>Date Added : <b><?php echo date("F d, Y",strtotime($row['date_added'])) ?></b></small></p>
 									</td>
 								</tr>
 								<?php endwhile; ?>
